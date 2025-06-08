@@ -1,19 +1,23 @@
 import express from 'express';
-import axios from 'axios';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// server.js
+// Setup dirname for ES modules
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON
-app.use(express.json());
+// Serve webpage
+app.use(express.static(path.join(dirname, 'public')));
 
-// Sample route
-app.get('/', (req, res) => {
-  res.send("this is a test endpoint");
+// API routes
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'This is a test' });
 });
 
-// Start the server
+// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
