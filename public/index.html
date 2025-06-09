@@ -9,10 +9,16 @@
 <body>
   <h1>test pagina</h1>
   <script type="module">
-    import { getData } from './dataHandler.js';
+    import { getData, postData } from './dataHandler.js';
 
-    const res = await getData('http://localhost:3000/api/test');
+    const res = await getData('http://localhost:3000/api/data');
     console.log(res);
+
+    postData({
+      "board": [["X", "O", ""], ["X", "O", ""], ["X", "", ""]],
+      "turn": "X",
+      "state": "new state"
+    })
   </script>
 </body>
 </html>
