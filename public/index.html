@@ -4,21 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boter Kaas en Eieren</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script type="module" src="./dataHandler.js"></script>
+  <script type="module" src="./gridFunctions.js"></script>
 </head>
-<body>
-  <h1>test pagina</h1>
-  <script type="module">
-    import { getData, postData } from './dataHandler.js';
 
-    const res = await getData('http://localhost:3000/api/data');
-    console.log(res);
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start relative">
 
-    postData({
-      "board": [["X", "O", ""], ["X", "O", ""], ["X", "", ""]],
-      "turn": "X",
-      "state": "new state"
-    })
-  </script>
+  <!-- Resetknop rechtsboven -->
+  <button 
+    onclick="resetBoard()" 
+    class="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow">
+    Reset
+  </button>
+
+  <!-- Titel gecentreerd -->
+  <h1 class="text-3xl font-bold mt-8 mb-6">Boter Kaas en Eieren</h1>
+
+  <!-- Grid -->
+  <div id="gameGrid" class="grid grid-cols-3 gap-2">
+    <button id="0" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(0, 0)"> </button>
+    <button id="1" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(0, 1)"> </button>
+    <button id="2" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(0, 2)"> </button>
+
+    <button id="3" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(1, 0)"> </button>
+    <button id="4" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(1, 1)"> </button>
+    <button id="5" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(1, 2)"> </button>
+
+    <button id="6" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(2, 0)"> </button>
+    <button id="7" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(2, 1)"> </button>
+    <button id="8" class="bg-white border border-gray-400 w-24 h-24 text-7xl" onclick="handleClick(2, 2)"> </button>
+  </div>
+
+  <section id="beurt" class="max-w-2xl px-6 py-4 bg-white rounded shadow mb-10 text-center mt-8">
+    <p class="text-gray-700"></p>
+  </section>
+
 </body>
 </html>
