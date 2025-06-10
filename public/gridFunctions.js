@@ -128,7 +128,7 @@ window.handleClick = async function (row, col) {
 }
 
 window.addEventListener("load", async () => {
-  game = await getData('http://localhost:3000/api/data');
+  game = await getData('/api/data');
   if (game.turn === "computer") { computerTurn(); }
   console.log(game);
   updateUI();
